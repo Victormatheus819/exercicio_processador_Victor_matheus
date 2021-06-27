@@ -14,7 +14,11 @@ public class Processador {
 			for(Boleto bol : list) {
 			    Pagamento pag = new Pagamento();
 				pag.setValorPago(bol.getValorPago());
+				fatura.setValorTotal(fatura.getValorTotal()- bol.getValorPago());
 				pag.setTipo("boleto");
+				 if(fatura.getValorTotal()<= 0) {
+				  fatura.setSituacao("PAGA");
+				 }
 				 listpag.add(pag);
 			}
 		}
