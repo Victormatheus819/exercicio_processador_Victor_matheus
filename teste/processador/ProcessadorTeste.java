@@ -17,14 +17,14 @@ public class ProcessadorTeste {
 		 Boleto bol1 = new Boleto(new Date(),"16ji",80.0);
 		 Boleto bol2 = new Boleto(new Date(),"17lo",90.0);
 		 ArrayList <Boleto> list = new ArrayList<Boleto>();
-		 
 		 list.add(bol1);
 		 list.add(bol2);
 		 Processador processador = new Processador();
 		 processador.setFatura(fat);
 		 processador.ProcessaBoletos(list);
 		 int numeroBoletos= processador.getList().size();
-		Assert.assertEquals(numeroBoletos, 2);
+		
+		 Assert.assertEquals(numeroBoletos, 2);
 	}
 	
 	@Test 
@@ -32,6 +32,7 @@ public class ProcessadorTeste {
 		 Fatura fat = new Fatura (new Date(),"carlos",170.0);
 		 Processador processador = new Processador();
 		 processador.setFatura(fat);
+		
 		 Assert.assertEquals(fat,processador.getFatura());
 		 
 	}
@@ -48,9 +49,27 @@ public class ProcessadorTeste {
 		 processador.setFatura(fat);
 		 processador.ProcessaBoletos(list);
 		 System.out.println(processador.getFatura().getValorTotal());
+		 
 		 ArrayList<Pagamento> tipo = processador.getList();
 		 Assert.assertEquals("PAGA",fat.getSituacao());
 		 Assert.assertEquals("boleto",tipo.get(0).getTipo());
 	}
 	
+	@Test 
+	public void TestaDebitoDeFaturaNãoPagaCpmpletamente() {
+		 Fatura fat = new Fatura (new Date(),"carlos",180.0);
+		 Boleto bol1 = new Boleto(new Date(),"16ji",80.0);
+		 Boleto bol2 = new Boleto(new Date(),"17lo",90.0);
+		 ArrayList <Boleto> list = new ArrayList<Boleto>();
+		 Processador processador = new Processador();
+		 list.add(bol1);
+		 list.add(bol2);
+		 processador.setFatura(fat);
+		 processador.ProcessaBoletos(list);
+		 System.out.println(processador.getFatura().getValorTotal());
+		 
+		 ArrayList<Pagamento> tipo = processador.getList();
+		 Assert.assertEquals("Pendente",fat.getSituacao());
+		 Assert.assertEquals("boleto",tipo.get(0).getTipo());
+	}
 }
