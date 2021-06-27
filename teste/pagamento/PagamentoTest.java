@@ -15,7 +15,7 @@ public class PagamentoTest {
 	
 	@DisplayName("Classe para insercao de conteudo em pagamento")
 	@Test
-	public void Insecao ConteudoemPagamento() {
+	public void InsercaoConteudoemPagamento() {
 		Pagamento pag= new Pagamento ();
 		pag.setTipo("Boleto");
 		pag.setValorPago(150.6);
