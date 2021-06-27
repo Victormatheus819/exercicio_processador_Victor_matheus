@@ -13,7 +13,6 @@ public class Processador {
 			    Pagamento pag = new Pagamento();
 				pag.setValorPago(bol.getValorPago());
 				pag.setTipo("boleto");
-				 System.out.println(pag.getTipo());
 				 listpag.add(pag);
 			}
 		}

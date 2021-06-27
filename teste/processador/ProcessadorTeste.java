@@ -12,7 +12,7 @@ public class ProcessadorTeste {
 
 	@Test
 	public void GeraPagamento() {
-		 Fatura fat = new Fatura (new Date(),"carlos",170.0);
+		
 		 Boleto bol1 = new Boleto(new Date(),"16ji",80.0);
 		 Boleto bol2 = new Boleto(new Date(),"17lo",90.0);
 		 ArrayList <Boleto> list = new ArrayList<Boleto>();
@@ -22,6 +22,17 @@ public class ProcessadorTeste {
 		 processador.ProcessaBoletos(list);
 		 int numeroBoletos= processador.getList().size();
 		Assert.assertEquals(numeroBoletos, 2);
+	}
+	
+	@Test 
+	public void TestaAssociacaoFatura() {
+		 Fatura fat = new Fatura (new Date(),"carlos",170.0);
+		 Processador processador   = new Processador();
+		 
+		 processador.setFatura();
+		 
+		 Assert.assertEquals(fat,processador.getFatura());
+		 
 	}
 	
 }
