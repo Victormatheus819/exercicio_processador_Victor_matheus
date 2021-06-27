@@ -29,7 +29,7 @@ public class ProcessadorTeste {
 		 Fatura fat = new Fatura (new Date(),"carlos",170.0);
 		 Processador processador   = new Processador();
 		 
-		 processador.setFatura();
+		 processador.setFatura(fat);
 		 
 		 Assert.assertEquals(fat,processador.getFatura());
 		 
