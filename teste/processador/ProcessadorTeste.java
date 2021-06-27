@@ -5,8 +5,6 @@ import java.util.Date;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-
-import Processador.Processador;
 import boleto.Boleto;
 import fatura.Fatura;
 
